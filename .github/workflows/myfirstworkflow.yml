@@ -1,29 +1,52 @@
 name: myfirstworkflow
 
-# To trigger on every push in every branch
 on:
-  push: 
+  push:
+
 jobs:
-  job1:
-    name: JOB1
+  upload-directory-artifact:
+    name: Upload Directory Artifact
     runs-on: ubuntu-latest
 
     steps:
-      - name: Step-1
-        run: |
-            pwd
-            ls -ltr
-            hostname
-
-      - name: Step 2 -Checkout
+      - name: Checkout repository
         uses: actions/checkout@v6.0.2
-      - name: Step 3
+
+      - name: Create artifact directory
         run: |
-            echo 'pwd'>> myartifact.txt
-            ls -ltr
-            hostname
-      - name: upload single file
+          mkdir my-artifact-dir
+          echo "First file" > my-artifact-dir/file1.txt
+          echo "Second file" > my-artifact-dir/file2.txt
+          echo "Secret file" > my-artifact-dir/secret.txt
+          echo "Log file" > my-artifact-dir/debug.log
+
+      - name: Upload full directory
         uses: actions/upload-artifact@v7.0.1
         with:
-          name: single_file
-          path: ./myartifact.txt
+          name: full-directory-artifact
+          path: my-artifact-dir/
+
+  upload-directory-excluding-files:
+    name: Upload Directory Excluding Files
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6.0.2
+
+      - name: Create artifact directory
+        run: |
+          mkdir my-artifact-dir
+          echo "First file" > my-artifact-dir/file1.txt
+          echo "Second file" > my-artifact-dir/file2.txt
+          echo "Secret file" > my-artifact-dir/secret.txt
+          echo "Log file" > my-artifact-dir/debug.log
+
+      - name: Upload directory excluding some files
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: filtered-directory-artifact
+          path: |
+            my-artifact-dir/
+            !my-artifact-dir/secret.txt
+            !my-artifact-dir/*.log
