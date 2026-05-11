@@ -30,3 +30,21 @@ jobs:
           echo "This is the first echo command"
           echo "This is the second echo command"
           sleep 20
+
+  job3:
+    name: JOB3
+    needs: job1
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: single step in job3
+        run: sleep 10
+
+  job4:
+    name: JOB4
+    needs: [job1, job2, job3]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: single step in job4
+        run: echo "Job4 runs after Job1 and Job2"
