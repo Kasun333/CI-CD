@@ -2,9 +2,6 @@ name: myfirstworkflow
 
 # To trigger on every push in every branch
 on:
-  schedule:
-    - cron: "5 * * * *"
-  workflow_dispatch:
   push: 
 jobs:
   job1:
@@ -12,48 +9,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: single step in this job
-        run: echo "Hi this is my first workflow job"
-
-      - name: checking OS release for my github runner
-        run: cat /etc/os-release
-
-      - name: Calling sleep
-        run: sleep 20
-  job2:
-    name: JOB2
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: get hostname
-        run: hostname
-
-      - name: execute multiple commands
+      - name: Step-1
         run: |
-          echo "This is the first echo command"
-          echo "This is the second echo command"
-          sleep 20
+            pwd
+            ls -ltr
+            hostname
 
-  job3:
-    name: JOB3
-    needs: job1
-    runs-on: windows-latest
-
-    steps:
-      - name: single step in job3
-        run: sleep 10
-      - name: Checking runner info
-        shell: pwsh
-        run: get-computerinfo
-
-  job4:
-    name: JOB4
-    needs: [job1, job2, job3]
-    runs-on: macos-latest
-
-    steps:
-      - name: single step in job4
-        run: echo "Job4 runs after Job1 and Job2"
-
-      - name: checking runner info
-        run: sw_vers
+      - name: Step 2 -Checkout
+        uses: actions/checkout@v6.0.2
+      - name: Step 3
+        run: |
+            pwd
+            ls -ltr
+            hostname
+  
