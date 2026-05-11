@@ -14,3 +14,19 @@ jobs:
 
       - name: checking OS release for my github runner
         run: cat /etc/os-release
+
+      - name: Calling sleep
+        run: sleep 20
+  job2:
+    name: JOB2
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: get hostname
+        run: hostname
+
+      - name: execute multiple commands
+        run: |
+          echo "This is the first echo command"
+          echo "This is the second echo command"
+          sleep 20
