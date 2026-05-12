@@ -6,6 +6,10 @@ on:
       - dev
       - main
 
+  pull_request:
+    branches:
+      - main
+
 jobs:
   upload-directory-artifact:
     name: Upload Directory Artifact
