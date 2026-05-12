@@ -12,7 +12,7 @@ on:
 
 jobs:
   upload-directory-artifact:
-    name: Upload Directory Artifact
+    name: job1
     runs-on: ubuntu-latest
 
     steps:
@@ -34,7 +34,7 @@ jobs:
           path: my-artifact-dir/
 
   upload-directory-excluding-files:
-    name: Upload Directory Excluding Files
+    name: job2
     runs-on: ubuntu-latest
 
     steps:
