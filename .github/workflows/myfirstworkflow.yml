@@ -2,6 +2,9 @@ name: myfirstworkflow
 
 on:
   push:
+    branches:
+      - dev
+      - main
 
 jobs:
   upload-directory-artifact:
