@@ -57,3 +57,6 @@ jobs:
             my-artifact-dir/
             !my-artifact-dir/secret.txt
             !my-artifact-dir/*.log
+
+      - name: Step for demo PR
+        run: exit 1
