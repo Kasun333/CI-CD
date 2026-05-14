@@ -87,6 +87,7 @@ jobs:
           echo "App Name: ${{ vars.APP_NAME }}"
           echo "App Version: ${{ vars.APP_VERSION }}"
           echo "Password: ${{ secrets.PASSWORD }}"
+        if: github.ref =='ref/head/dev'
 
   production-info:
     name: PRODUCTION Environment Details
@@ -100,3 +101,4 @@ jobs:
           echo "App Name: ${{ vars.APP_NAME }}"
           echo "App Version: ${{ vars.APP_VERSION }}"
           echo "Password: ${{ secrets.PASSWORD }}"
+        if: github.ref =='ref/head/main'
