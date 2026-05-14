@@ -79,6 +79,7 @@ jobs:
     name: STAGING Environment Details
     runs-on: ubuntu-latest
     environment: STAGING
+    if: github.ref =='refs/head/dev'
 
     steps:
       - name: Print STAGING variables and secret
@@ -87,12 +88,13 @@ jobs:
           echo "App Name: ${{ vars.APP_NAME }}"
           echo "App Version: ${{ vars.APP_VERSION }}"
           echo "Password: ${{ secrets.PASSWORD }}"
-        if: github.ref =='refs/head/dev'
+        
 
   production-info:
     name: PRODUCTION Environment Details
     runs-on: ubuntu-latest
     environment: PRODUCTION
+    if: github.ref =='refs/head/main'
 
     steps:
       - name: Print PRODUCTION variables and secret
@@ -101,4 +103,4 @@ jobs:
           echo "App Name: ${{ vars.APP_NAME }}"
           echo "App Version: ${{ vars.APP_VERSION }}"
           echo "Password: ${{ secrets.PASSWORD }}"
-        if: github.ref =='refs/head/main'
+        
