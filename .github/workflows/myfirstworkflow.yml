@@ -65,3 +65,12 @@ jobs:
             my-artifact-dir/
             !my-artifact-dir/secret.txt
             !my-artifact-dir/*.log
+  show-trigger-info:
+    name: Show Trigger Information
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Display event details
+        run: |
+          echo "Workflow triggered by: ${{ github.actor }}"
+          echo "Event name: ${{ github.event_name }}"
