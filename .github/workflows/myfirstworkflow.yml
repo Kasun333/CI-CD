@@ -79,7 +79,7 @@ jobs:
     name: STAGING Environment Details
     runs-on: ubuntu-latest
     environment: STAGING
-    if: github.head_ref =='dev'
+    if: github.ref =='refs/heads/dev'
 
     steps:
       - name: Print STAGING variables and secret
@@ -94,7 +94,7 @@ jobs:
     name: PRODUCTION Environment Details
     runs-on: ubuntu-latest
     environment: PRODUCTION
-    if: github.head_ref =='main'
+    if: github.ref =='refs/heads/main'
 
     steps:
       - name: Print PRODUCTION variables and secret
