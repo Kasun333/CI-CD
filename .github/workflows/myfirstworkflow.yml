@@ -103,4 +103,18 @@ jobs:
           echo "App Name: ${{ vars.APP_NAME }}"
           echo "App Version: ${{ vars.APP_VERSION }}"
           echo "Password: ${{ secrets.PASSWORD }}"
+
+  debug-refs:
+    name: Debug GitHub Refs
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Print GitHub context values
+      run: |
+        echo "github.ref = ${{ github.ref }}"
+        echo "github.head_ref = ${{ github.head_ref }}"
+        echo "github.base_ref = ${{ github.base_ref }}"
+        echo "github.ref_name = ${{ github.ref_name }}"
+        echo "github.actor = ${{ github.actor }}"
+        echo "github.event_name = ${{ github.event_name }}"
         
