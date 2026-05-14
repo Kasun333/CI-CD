@@ -23,6 +23,10 @@ jobs:
           echo "Environment: ${{ env.ENVIRONMENT }}"
           echo "Version: ${{ env.VERSION }}"
 
+      - name: Use GitHub Secret
+        run: |
+          echo "Password: ${{ secrets.APP_PASSWORD }}"
+
       - name: Create artifact directory
         run: |
           mkdir my-artifact-dir
