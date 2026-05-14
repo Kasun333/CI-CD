@@ -74,3 +74,29 @@ jobs:
         run: |
           echo "Workflow triggered by: ${{ github.actor }}"
           echo "Event name: ${{ github.event_name }}"
+
+  staging-info:
+    name: STAGING Environment Details
+    runs-on: ubuntu-latest
+    environment: STAGING
+
+    steps:
+      - name: Print STAGING variables and secret
+        run: |
+          echo "Environment: STAGING"
+          echo "App Name: ${{ vars.APP_NAME }}"
+          echo "App Version: ${{ vars.APP_VERSION }}"
+          echo "Password: ${{ secrets.PASSWORD }}"
+
+  production-info:
+    name: PRODUCTION Environment Details
+    runs-on: ubuntu-latest
+    environment: PRODUCTION
+
+    steps:
+      - name: Print PRODUCTION variables and secret
+        run: |
+          echo "Environment: PRODUCTION"
+          echo "App Name: ${{ vars.APP_NAME }}"
+          echo "App Version: ${{ vars.APP_VERSION }}"
+          echo "Password: ${{ secrets.PASSWORD }}"
