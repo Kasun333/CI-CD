@@ -4,16 +4,16 @@ on:
   push:
     branches:
       - main
-      - develop
+      - dev
 
   pull_request:
     branches:
       - main
-      - develop
+      - dev
 
 jobs:
   python-ci:
-    uses: Kasun333/CI-CD/.github/workflows/python-ci-reusable.yml@shared-workflows
+    uses: Kasun333/CI-CD/.github/workflows/myfirstworkflow.yml@temp
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
