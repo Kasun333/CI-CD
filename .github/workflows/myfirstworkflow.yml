@@ -2,14 +2,13 @@ name: Python CI/CD
 
 on:
   push:
-    branches:
-      - main
-      - dev
-
   pull_request:
-    branches:
-      - main
-      - dev
+
+permissions:
+  actions: read
+  contents: read
+  security-events: write
+  packages: read
 
 jobs:
   python-ci:
